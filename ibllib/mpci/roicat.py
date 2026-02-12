@@ -189,7 +189,7 @@ class ROICaTTask(SubjectAggregateTask):
             clusters[int(cID)] = path_list
             if path_list:
                 #in cases where two clustered FOVs come from the same session, choose the top one (TODO this is a HACK for now)
-                inferred_name = 'FOV_'+most_common_suffix([str(p)[-25:] for p in np.array(FOV_paths_sel)[idxs]])
+                inferred_name = 'FOV_' + most_common_suffix(path_list)
                 cluster_name = f"cFOV_{cID:02d}"
                 
                 logger.info('\nCluster name: %s   Inferred name: %s', cluster_name, inferred_name)
