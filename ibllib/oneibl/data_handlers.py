@@ -16,7 +16,7 @@ from copy import copy
 from one.api import ONE
 from one.webclient import AlyxClient
 from one.util import filter_datasets
-from one.alf.path import add_uuid_string, get_alf_path, ensure_alf_path
+from one.alf.path import add_uuid_string, get_alf_path, ensure_alf_path, ALFPath
 from one.alf.cache import _make_datasets_df
 from iblutil.util import flatten, ensure_list
 
@@ -149,7 +149,7 @@ class ExpectedDataset:
           patterns.
         - Missing (or unexpectedly found) patterns are returned despite the dataset being optional.
         """
-        session_path = Path(session_path)
+        session_path = ALFPath(session_path)
         ok, actual_files, missing = False, [], None
         if self.operator is None:
             if register and not self.register:
